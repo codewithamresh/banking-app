@@ -1,22 +1,25 @@
 package com.amreshmaurya.banking_app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "users")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String email;
+    private String password;
 
     @OneToMany(mappedBy = "user")
     private List<AccountEntity> accounts;
